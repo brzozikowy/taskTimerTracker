@@ -22,5 +22,16 @@ Route::group([], function () {
     Route::get('languages', ['uses' => 'LanguagesController@getAllLangs']);
 
     Route::get('tasks', ['uses' => 'TaskController@getAllTasks']);
-    Route::post('task/create', ['uses' => 'TaskController@create']);
+    Route::post('tasks/create', ['uses' => 'TaskController@create']);
+    Route::post('tasks/edit/{id}', ['uses' => 'TaskController@edit']);
+    Route::delete('tasks/delete/{id}', ['uses' => 'TaskController@delete']);
+    Route::post('tasks/changeStatus/{id}', ['uses' => 'TaskController@changeStatus']);
+
+    Route::post('comment/add/{task_id}', ['uses'=> 'CommentController@addComment']);
+    Route::get('timer', ['uses' => 'TaskController@timer']);
+
+    Route::post('addTemplate', ['uses' => 'TemplateController@addTemplate']);
+    Route::post('createTemplate', ['uses' => 'TemplateController@createTemplate']);
+
+    Route::get('list/download', ['uses' => 'FilesController@download']);
 });
