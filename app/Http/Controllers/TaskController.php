@@ -95,7 +95,7 @@ class TaskController extends Controller
                 $userId = (int)$request->auth;
             }
             if($request->status == TASK::DURING_){
-                $count  = Task::canDuringStatus($request->date);
+                $count  = Task::canDuringStatus();
                 if(!$count){
                     return response("Finish the active task", 422);
                 }

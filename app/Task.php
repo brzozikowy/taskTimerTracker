@@ -52,17 +52,8 @@ class Task extends Model
         return $this->hasMany('\App\Timer');
     }
 
-    public static function canDuringStatus($date){
-        if(isset($date)){
-            $date =  Carbon::parse($date);
-     
-        }else{
-            $date = Carbon::now();
-        }
-        $start = $date->toDateString();
-        $end = $date->addDay()->toDateString();
-
-        return \App\Task::where('created_at', '>=', $start)->where('created_at', '<', $end)->where('status', 'DURING')->count() == 0 ;
+    public static function canDuringStatus(){
+        return \App\Task::where('status', 'DURING')->count() == 0 ;
         
     }
 
